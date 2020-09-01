@@ -1,0 +1,79 @@
+
+h1#chatspace {
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+    margin: auto ;
+  }
+#chatmsg{
+    font-size: 12px;
+    text-align: left;
+}
+#chat{
+    text-align: center;
+}
+.container {
+    border: 2px solid #012c1b;
+    background-color: #f370c1;
+    border-radius: 5px;
+    width: 400px;
+    height: auto;
+    
+}
+body {
+  font-family: Courier;
+  background-image: url("https://image.freepik.com/free-photo/beautiful-natural-background-white-sand-beach-green-sea-water-wave-summer_43520-185.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+  header {
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+  background-image:  url(https://i.redd.it/yy0y1f9opzl31.jpg);
+  }
+  
+  h1 {
+    padding: 14px;
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    background-image:  url(https://wallpaperaccess.com/full/676556.jpg);
+    background-color: #63c7a4;
+    background-blend-mode: lighten;
+  
+  }
+  
+  button {
+    background-color: pink;
+    color: black;
+    font-size: 25px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    font-family: Courier;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ff9cca;
+  }
+  
+  p[id=name]{
+  display: none;
+  }
+  
+  #menu{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}

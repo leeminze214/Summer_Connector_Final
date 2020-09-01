@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/home.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Connecter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+    <body>
+      {%with messages = get_flashed_messages()%}
+        {%if messages:%}
+          {%for x in messages:%}
+            <p>{{x}}</p>
+          {%endfor%}
+        {%endif%}
+      {% endwith %}
+              <header>
+                <h1>Summer Connector</h1>
+              </header>
+              <h1>WELCOME</h1>
+
+              <div class="rightside">
+                <fieldset>
+                  <legend>SIGNUP HERE</legend>
+                  <form action="/signup" method = "POST">
+                      <label for = 'Username'>Username</label>
+                      <input name = 'Username' type="text" required>
+                      <label for="Age">Age</label>
+                      <input name="Age" type="number" min="13" max="100" value="13" id="Age" required>
+                      <label for="Location">Location</label>
+                      <input name="Location" type="text required">
+                      <label for="Password">Password</label>
+                      <input type="password" name="Password" id = 'Password' required>
+                      <label for="Confrim">Confirm Password</label>
+                      <input type="password" name="Confirm" id = 'Confirm' required>
+                      <input type="submit">
+
+                </form>
+                </fieldset>
+                </div>
+
+        <div class="rightside">
+          <fieldset>
+            <legend>ALREADY HAVE <br> AN ACCOUNT? <br> LOGIN HERE!!!!</legend>
+            <form action="/" method = "POST">
+                <label for = 'Username'>Username</label>
+                <input name = 'Username' required>
+                <label for="Password" >Password</label>
+                <input name="Password" type="password" required>
+                <input type="submit">
+              </form>
+            </fieldset>
+          </div>
+
+         <div class="leftside">
+             <h2>About us:</h2>
+             <p>Looking to have some fun in the Summer?<br><br> Summer Connector will help you chat and meet up with people who share your interests. Choose your favourite activities and connect with people near you!</p>
+          </div>
+        <script src="../static/login.js"></script>
+        </body>
+    </html>
+
