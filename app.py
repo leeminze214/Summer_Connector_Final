@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for, session, abort,flash
-from flask_socketio import SocketIO, join_room, leave_room
+from flask_socketio import SocketIO, join_room, leave_room, emit, send, disconnect
 from db_class import config, methods
 
 app = Flask(__name__)
@@ -59,19 +59,9 @@ def signup():
 #after user logs in, they will be led to main lobby where they can join diff chatrooms
 @app.route('/lobby')
 def main_lobby():
-   
+    socketio.emit('joined lobby', {'name':session['username']})
     return render_template('lobby.html', name = session['username'])
 
-#returns respective topic's chatroom, using socket.io rooms
-@app.route('/lobby/<topic>')
-def activity(topic):
-    activities = ['basketball','swimming','hiking','soccer','camping']
-    
-    if topic in activities:
-      
-        return render_template('chat.html',topic = topic, name = session['username'])
-
-    return abort(404, 'No chatroom found on topic')
 
 #logout button will access this route redirect user to login
 @app.route('/logout')
@@ -85,6 +75,45 @@ def logout():
 
 
 #------------------------------------socket-------------------------------#
+@socketio.on('connected')
+def connection():
+    print('join lobby')
+@socketio.on('connected', namespace='/test')
+def connection1():
+    print('join lobby test')
+'''
+@socketio.on('disconnect')
+def dis():
+    print('discconectmain')
+@socketio.on('disconnect', namespace='/test')
+def dis2():
+    print('disssecond')
+'''
+@socketio.on('message_sent')
+def message_received(data):
+    print(data)
+    send(data['user_name']+': '+data['msg']+' from '+data['room'])
+
+@socketio.on('message_sent', namespace ='/test')
+def message_received1(data):
+    print(data)
+    send(data['user_name']+': '+data['msg']+' from '+data['room'])
+
+@socketio.on('change')
+def changing(data):
+    del data['namespaces']['/']
+    for i in data['namespaces'].keys():
+
+        disconnect(namespace=i)
+        print('disconnect from '+i)
+    
+@socketio.on('change', namespace='/test')
+def changin2g(data):
+    del data['namespaces']['/test']
+    for i in data['namespaces'].keys():
+        disconnect(namespace=i)
+        print('disconnect from '+i)
+
 
 if __name__ == '__main__':
     socketio.run(app, debug = True)
