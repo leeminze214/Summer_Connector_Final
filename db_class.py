@@ -1,10 +1,17 @@
 import psycopg2
 import json
-
-#load in config object
+'''
+load in config object
 with open('auth.json') as r:
     config = json.load(r)
-
+'''
+config = {
+    "host":"localhost",
+    "username":"postgres",
+    "password":"leezheng",
+    "port":"5432",
+    "database":"summer_connecter"
+}
 class methods():
     """PostgreSQL Database class."""
     def __init__(self, config):
