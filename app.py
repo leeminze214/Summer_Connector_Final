@@ -12,7 +12,6 @@ execute = methods(config) #database methods and connection
 #----------------------------------routes-------------------------------#
 
 #login and signup page as default
-
 @app.route('/', methods = ["GET","POST"])
 def login():
     form = request.form.to_dict()
@@ -20,6 +19,7 @@ def login():
     if 'Username' in form and 'Password' in form:
         print('login',form)
         username = form['Username']
+        
         password = form['Password']
         info = execute.login(username,password)
 
@@ -28,7 +28,6 @@ def login():
             session['username'] = info['name']
             session['age'] = info['age']
             session['location'] = info['location']
-            
             return redirect(url_for('main_lobby'))
 
         flash("Invalid Login!")
@@ -74,10 +73,11 @@ def logout():
 
 
 #------------------------------------socket-------------------------------#
-rooms = ['lobby','basketball','soccer','swimming']
+#rooms = ['lobby','basketball','soccer','swimming']
 @socketio.on('connected')
-def connection():
+def connection(name):
     join_room('lobby')
+    send(name +' has joined the lobby', room='lobby')
     print('join lobby')
 
 @socketio.on('message_sent')
@@ -96,11 +96,15 @@ def specific_room(data):
     prev_room = data['prev']
     room = data['room']
     if prev_room != room:
-        leave_room(prev_room)
+        send(data['name']+' has left '+prev_room, room = prev_room)
+        emit('clear_chat')
         
+        
+        leave_room(prev_room)
         print(prev_room,room)
         join_room(room)
-        send(data['name']+' has joined '+data['room'],room=data['room'])
-        emit('entered_room', {'name':data['name'],'room':data['room']}, room=data['room'])
+        if room !='lobby':
+            send(data['name']+' has joined '+data['room'],room=data['room'])
+        
 if __name__ == '__main__':
     socketio.run(app, debug = True)
