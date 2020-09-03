@@ -20,7 +20,7 @@ class methods():
     def login(self, username, password):
         self.connect()
         cur = self.conn.cursor()
-        cur.execute(f"SELECT * FROM user_info WHERE name ='"+{username}+"' AND pw ='"+{password}+"';")
+        cur.execute("SELECT * FROM user_info WHERE name ='"+username+"' AND pw ='"+password+"';")
         res = cur.fetchone()
         cur.close()
         if res is not None:
@@ -32,7 +32,7 @@ class methods():
     def taken(self,username): 
         self.connect()
         cur = self.conn.cursor()
-        cur.execute(f"SELECT * FROM user_info WHERE name ='"+{username}+"';")
+        cur.execute("SELECT * FROM user_info WHERE name ='"+username+"';")
         res = cur.fetchone()
         cur.close()
         if res is not None:
@@ -44,7 +44,7 @@ class methods():
     def signup(self, username,password,age,location):
         self.connect()
         cur = self.conn.cursor()
-        cur.execute(f"INSERT INTO user_info(name,pw,age,location) VALUES('"+{username}+"','"+{password}+"',"+{age}+",'"+{location}+"');")
+        cur.execute("INSERT INTO user_info(name,pw,age,location) VALUES('"+username+"','"+password+"',"+age+",'"+location+"');")
         self.conn.commit()
         cur.close()
         print(username+' has succesfully signed up!')
