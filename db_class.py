@@ -13,6 +13,7 @@ class methods():
 
     def connect(self):
         """Connect to a Postgres database."""
+        print('database connecting')
         if self.conn is None:
             self.conn = psycopg2.connect(self.URI)
             print('database connected')
