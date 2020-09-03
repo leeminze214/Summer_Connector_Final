@@ -6,7 +6,7 @@ with open('auth.json') as r:
     config = json.load(r)
 '''
 config = {
-    "host":"localhost",
+    "host":"postgres://scviszuljxwilm:2c5d439483ffb7ad22a83d6ea32525c451f20c148f39ef8049dc322ca683e458@ec2-54-172-173-58.compute-1.amazonaws.com:5432/dd0v3nsutfj8g4",
     "username":"postgres",
     "password":"leezheng",
     "port":"5432",
