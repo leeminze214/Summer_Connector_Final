@@ -10,19 +10,19 @@
 </head>
 <body>
     <h1 id='test'>WELCOME {{name}}, to summer connecter</h1>
-    <h1 id='test2'>test2</h1>
+  
     <div id = 'menu'>
-        <a href = '/lobby'><button type = 'button'>Main Lobby</button></a>
-        <a href = '/lobby/swimming'><button type = 'button'>swimming</button></a>
-        <a href = '/lobby/basketball'><button type = 'button'>basketball</button></a>
-        <a href = '/lobby/soccer'><button type = 'button'>soccer</button></a>
-        <a href = '/lobby/camping'><button type = 'button'>camping</button></a>
-        <a href = '/lobby/hiking'><button type = 'button'>hiking</button></a>
-        <a href = '/logout'><button type = 'button'>Logout</button></a>
+        <a href = '/lobby'><button type = 'button' id='lobby'>Main Lobby</button></a>
+        <button type = 'button' id='basketball'>basketball</button>
+        <button type = 'button' id='soccer'>soccer</button>
+        <button type = 'button' id='swimming'>swimming</button>
+        <a href = '#'><button type = 'button' id='logout'>Logout</button></a>
         <p id = 'name'>{{name}}</p>
 
     </div>
-    <h1 id = 'chatspace'>Chat here!</h1>
+    <div id='chatspace'>
+        <h1 id = 'chathead'>Chat here!</h1>
+    </div>
     <form id = 'chat'>
       <label for = 'msg'>Enter message: </label>
       <input name="msg" id = 'chat_message'>
