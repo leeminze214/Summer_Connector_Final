@@ -20,7 +20,7 @@ class methods():
     def login(self, username, password):
         self.connect()
         cur = self.conn.cursor()
-        cur.execute(f"SELECT * FROM user_info WHERE name ='{username} AND pw ='{password}';")
+        cur.execute(f"SELECT * FROM user_info WHERE name ='{username}' AND pw ='{password}';")
         res = cur.fetchone()
         cur.close()
         if res is not None:
