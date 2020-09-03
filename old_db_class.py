@@ -1,20 +1,31 @@
+'''
 import psycopg2
 import json
-import os
 
-db_uri = os.environ['DATABASE_URL']
-
+#load in config object
+with open('auth.json') as r:
+    config = json.load(r)
 
 class methods():
     """PostgreSQL Database class."""
-    def __init__(self, uri):
-        self.URI = uri
+    def __init__(self, config):
+        self.host = config['host']
+        self.username = config['username']
+        self.pw = config['password']
+        self.port = config['port']
+        self.dbname = config['database']
         self.conn = None
 
     def connect(self):
         """Connect to a Postgres database."""
         if self.conn is None:
-            self.conn = psycopg2.connect(self.URI)
+            self.conn = psycopg2.connect(
+                host=self.host,
+                user=self.username,
+                password=self.pw,
+                port=self.port,
+                database=self.dbname
+            )
             print('database connected')
 
     def login(self, username, password):
@@ -52,3 +63,8 @@ class methods():
         self.conn.commit()
         cur.close()
         print(username+' has succesfully signed up!')
+ 
+'''
+
+
+    
