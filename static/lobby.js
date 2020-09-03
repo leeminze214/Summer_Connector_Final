@@ -51,6 +51,10 @@ $(document).ready(()=>{
         $('#chathead').empty()
     });
 
+    socket.on('new_room',()=>{
+        $('#welcome').text('WELCOME '+name+', to '+room+' room')
+    })
+
     $('#chat').on('submit', (e)=>{
         e.preventDefault() //prevent the default post request, turns to socket.send instead
         var msg = $('#chat_message').val()//use .val() to access input fields

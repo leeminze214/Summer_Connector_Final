@@ -83,7 +83,7 @@ def connection(name):
 @socketio.on('message_sent')
 def message_received(data):
     print(data)
-    send(data['user_name']+': '+data['msg']+' from '+data['room'], room=data['room'])
+    send(data['user_name']+': '+data['msg'], room=data['room'])
 
 @socketio.on('logout')
 def logingout():
@@ -104,6 +104,7 @@ def specific_room(data):
         print(prev_room,room)
         join_room(room)
         if room !='lobby':
+            emit('new_room')
             send(data['name']+' has joined '+data['room'],room=data['room'])
         
 if __name__ == '__main__':
