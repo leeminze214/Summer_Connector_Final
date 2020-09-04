@@ -1,5 +1,5 @@
 auth.json
-
+test_db_class.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

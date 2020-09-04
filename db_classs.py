@@ -1,4 +1,4 @@
-'''
+
 import psycopg2
 import json
 
@@ -64,7 +64,7 @@ class methods():
         cur.close()
         print(username+' has succesfully signed up!')
  
-'''
+
 
 
     

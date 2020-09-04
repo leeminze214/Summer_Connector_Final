@@ -1,12 +1,12 @@
 from flask import Flask, redirect, render_template, request, url_for, session, abort,flash
 from flask_socketio import SocketIO, join_room, leave_room, emit, send, disconnect, Namespace
-from db_class import methods, db_uri
+from db_class import methods, config
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdfasf2(*H)83hf0283f)#*'
 socketio = SocketIO(app)
-execute = methods(db_uri) #database methods and connection 
+execute = methods(config) #database methods and connection 
 
 
 
