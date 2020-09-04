@@ -109,5 +109,5 @@ def specific_room(data):
             send(data['name']+' has joined '+data['room'],room=data['room'])
         
 if __name__ == '__main__':
-    #socketio.run(app, debug = True), using heroku now so no need
-    app.run()
+    socketio.run(app, debug = True)#, using heroku now so no need
+    #app.run()
