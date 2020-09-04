@@ -66,7 +66,7 @@ def main_lobby():
 @app.route('/logout')
 def logout():
 
-    for i in session.keys():
+    for i in list(session.keys()):
         session.pop(None,i)
 
     return redirect('/')
