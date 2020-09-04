@@ -3,8 +3,8 @@ import json
 import os
 
 db_uri = os.environ['DATABASE_URL']
-
-
+#https://kb.objectrocket.com/postgresql/heroku-and-postgresql-1155#:~:text=At%20the%20end%20of%20your,defined%20in%20the%20database%20credentials.
+#https://www.youtube.com/watch?v=FWU_tJqr1Po&t=185s&ab_channel=SandeepSudhakaran
 class methods():
     """PostgreSQL Database class."""
     def __init__(self, uri):
@@ -41,6 +41,7 @@ class methods():
             return True
         print('username is not taken')
         return False
+
 
     def signup(self, username,password,age,location):
         self.connect()
