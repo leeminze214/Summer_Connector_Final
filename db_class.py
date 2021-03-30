@@ -12,7 +12,6 @@ class methods():
         self.host = config['host']
         self.username = config['username']
         self.pw = config['password']
-        self.port = config['port']
         self.dbname = config['database']
         self.conn = None
 
