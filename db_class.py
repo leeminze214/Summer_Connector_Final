@@ -23,7 +23,6 @@ class methods():
                 host=self.host,
                 user=self.username,
                 password=self.pw,
-                port=self.port,
                 database=self.dbname
             )
             print('database connected')
@@ -37,7 +36,7 @@ class methods():
         res = cur.fetchone()
         cur.close()
         if res is not None:
-            _,name,_,location,age = res
+            name,_,location,age = res
             return {'name':name,'location':location,'age':age}
         return False
 
